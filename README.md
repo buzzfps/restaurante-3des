@@ -2,7 +2,7 @@
 
 ## Descricao
 
-Projeto modelo para o terceiro semestre do curso técnico de desenvolvimento de sistemas turma:3 DES 2023
+Projeto modelo para o terceiro semestre do curso técnico de desenvolvimento de sistemas turma: 3 DES 2023
 
 ## Regras de negócio
 
