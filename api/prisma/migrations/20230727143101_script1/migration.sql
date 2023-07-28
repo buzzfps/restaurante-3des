@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS restaurante;
+CREATE DATABASE restaurante;
+USE restaurante;
 -- CreateTable
 CREATE TABLE `cardapio` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
@@ -68,3 +71,21 @@ ALTER TABLE `Itens` ADD CONSTRAINT `Itens_pedidoId_fkey` FOREIGN KEY (`pedidoId`
 
 -- AddForeignKey
 ALTER TABLE `Itens` ADD CONSTRAINT `Itens_cardapioId_fkey` FOREIGN KEY (`cardapioId`) REFERENCES `cardapio`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+insert into cardapio values
+("", "brisadeiro", "Um delicioso brisadeiro que ira te fazer viajar", 10),
+("", "X-ratão", "Uma carne deliciosa de rato", 50 ),
+("", "Corinthians", "Carne de gavião das águias das montanhas", 40);
+
+insert into motoboy values
+("", "jeguelson nunes", "FJS-493", "fds"),
+("", "indio da silva", "ODS-392", "krl"),
+("", "kevin comer", "DAP-350", "prr");
+
+insert into cliente values
+("", "kevin sentar", "Rua das Ruas", "19 99985-2372", "1392-392", "543", ""),
+("", "jacinto aquino", "Beco sem saida", "19 99768-9694", "4033-504", "543", ""),
+("", "jair mendes", "Rua laureta gauna", "19 99746-7493", "1302-680", "92", "");
+
+insert int pedido values
+("", "", "", DATETIME, )
