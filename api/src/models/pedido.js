@@ -14,6 +14,10 @@ class Pedido {
         return `INSERT INTO pedido VALUE(default, ${this.clienteId}, ${this.motoboyId}, ${this.dataPedido}, ${this.dataCozinha}, ${this.dataEntrega}, ${this.valorTotal}, ${this.valorEntrega},)`
     }
 
+    // update() {
+    //     return `UPDATE cliente SET nome = '${this.nome}', endereco = '${this.endereco}', telefone = '${this.telefone}', enderecoCep = '${this.enderecoCep}', enderecoNumero = '${this.enderecoNumero}', enderecoComplemento = '${this.enderecoComplmento}',`
+    // }
+
     read() {
         if (this.id == undefined)
             return `SELECT * FROM pedido`

@@ -3,11 +3,11 @@ class Cardapio {
         this.id = i.id
         this.produto = i.produto
         this.descricao = i.descricao
-        this.preco = i.senha
+        this.preco = i.preco
     }
 
     create() {
-        return `INSERT INTO cardapio VALUE(default,'${this.produto}','${this.descricao}'),${this.preco})`
+        return `INSERT INTO cardapio VALUE(default,'${this.produto}','${this.descricao}', ${this.preco})`
     }
 
     read() {

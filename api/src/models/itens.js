@@ -18,7 +18,7 @@ class Itens {
     }
 
     update() {
-        return `UPDATE itens SET quantidade = '${this.quantidade}'`
+        return `UPDATE itens SET quantidade = '${this.quantidade},  WHERE id = ${this.id}'`
     }
 
     delete() {
