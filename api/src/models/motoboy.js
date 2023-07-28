@@ -7,7 +7,7 @@ class Motoboy {
     }
 
     create() {
-        return `INSERT INTO motoboy VALUE(default,'${this.produto}','${this.descricao}'),${this.preco})`
+        return `INSERT INTO motoboy VALUE(default,'${this.nome}','${this.placa}'),${this.modelo})`
     }
 
     read() {

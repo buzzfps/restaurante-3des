@@ -21,10 +21,6 @@ class Pedido {
             return `SELECT * FROM pedido WHERE id = ${this.id}`
     }
 
-    update() {
-        return `UPDATE pedido SET nome = '${this.nome}', endereco = '${this.endereco}', telefone = '${this.telefone}', enderecoCep = '${this.enderecoCep}', enderecoNumero = '${this.enderecoNumero}', enderecoComplemento = '${this.enderecoComplmento}',`
-    }
-
     delete() {
         return `DELETE FROM pedido WHERE id = ${this.id}`
     }
