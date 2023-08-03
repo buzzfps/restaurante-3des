@@ -1,8 +1,5 @@
-DROP DATABASE IF EXISTS restaurante;
-CREATE DATABASE restaurante;
-USE restaurante;
 -- CreateTable
-CREATE TABLE `cardapio` (
+CREATE TABLE `Cardapio` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `produto` VARCHAR(191) NOT NULL,
     `descricao` VARCHAR(191) NOT NULL,
@@ -26,26 +23,25 @@ CREATE TABLE `Cliente` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `cpf` VARCHAR(191) NOT NULL,
     `nome` VARCHAR(191) NOT NULL,
-    `endereco` VARCHAR(191) NOT NULL,
-    `telefone` VARCHAR(191) NOT NULL,
+    `telefones` VARCHAR(191) NOT NULL,
     `enderecoCep` VARCHAR(191) NOT NULL,
     `enderecoNumero` VARCHAR(191) NOT NULL,
-    `enderecoComplemento` VARCHAR(191) NOT NULL,
+    `enderecoComplemento` VARCHAR(191) NULL,
 
     UNIQUE INDEX `Cliente_cpf_key`(`cpf`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `pedido` (
+CREATE TABLE `Pedido` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `clienteId` INTEGER NOT NULL,
     `motoboyId` INTEGER NOT NULL,
     `dataPedido` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dataCozinha` DATETIME(3) NULL,
     `dataEntrega` DATETIME(3) NULL,
-    `valorTotal` DOUBLE NOT NULL,
-    `ValorEntrega` DOUBLE NULL,
+    `valorPedido` DOUBLE NOT NULL,
+    `valorEntrega` DOUBLE NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -61,13 +57,13 @@ CREATE TABLE `Itens` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
-ALTER TABLE `pedido` ADD CONSTRAINT `pedido_clienteId_fkey` FOREIGN KEY (`clienteId`) REFERENCES `Cliente`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Pedido` ADD CONSTRAINT `Pedido_clienteId_fkey` FOREIGN KEY (`clienteId`) REFERENCES `Cliente`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `pedido` ADD CONSTRAINT `pedido_motoboyId_fkey` FOREIGN KEY (`motoboyId`) REFERENCES `Motoboy`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Pedido` ADD CONSTRAINT `Pedido_motoboyId_fkey` FOREIGN KEY (`motoboyId`) REFERENCES `Motoboy`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Itens` ADD CONSTRAINT `Itens_pedidoId_fkey` FOREIGN KEY (`pedidoId`) REFERENCES `pedido`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Itens` ADD CONSTRAINT `Itens_pedidoId_fkey` FOREIGN KEY (`pedidoId`) REFERENCES `Pedido`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Itens` ADD CONSTRAINT `Itens_cardapioId_fkey` FOREIGN KEY (`cardapioId`) REFERENCES `cardapio`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Itens` ADD CONSTRAINT `Itens_cardapioId_fkey` FOREIGN KEY (`cardapioId`) REFERENCES `Cardapio`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;

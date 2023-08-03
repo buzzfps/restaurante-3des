@@ -1,5 +1,8 @@
 const express = require('express')
 const cors = require('cors')
+const dotenv = require('dotenv')
+
+const PORT = process.env.PORT || 3000;
 
 const routerCardapio = require('./src/routes/cardapio')
 const routerCliente = require('./src/routes/cardapio')
@@ -17,6 +20,4 @@ app.use('/', routerItens)
 app.use('/', routerMotoboy)
 app.use('/', routerPedido)
 
-app.listen(3000, () => {
-    console.log("Rodando")
-})
+app.listen(PORT, () => { console.log("API respondendo na porta " + PORT) })
