@@ -6,11 +6,13 @@ insert into cliente values
 (default, "066.453.810-00", "Saulo Martim","19-50210-7927, 19-54920-8113", "13914-552", "1227", null),
 (default, "000.000.000-00", "Comer no local","19 99999-9999", "13917-151", "0", null);
 
+
 insert into motoboy values
 (default,"Gilberto Martins","JQT-7I87","CG Titan KS 150 Honda"),
 (default,"Clóvis Martins","FZC-9X29","Faser 250 Yamaha"),
 (default,"Saulo Martim","LHW-1J81","Ginerae"),
 (default,"Sem entrega","AAA-0A00","Sem veículo");
+
 
 insert into cardapio values
 (default, "Parmegiana de Frango", "Filé de frango empanado, coberto com molho de tomate, presunto e queijo mussarela gratinado. Acompanha arroz branco e fritas.", 25.00),
@@ -31,11 +33,11 @@ insert into pedido values
 (default, 6, 4, curtime(), null, null, 0, 0);
 
 insert into itens values
-(default,1, 3, 1, (select preco from cardapio where id = 3)),
-(default,1, 8, 1, (select preco from cardapio where id = 8)),
-(default,2, 1, 2, (select preco from cardapio where id = 1)),
-(default,3, 4, 1, (select preco from cardapio where id = 4)),
-(default,3, 6, 1, (select preco from cardapio where id = 6));
+(default, 1, 3, 1, (select preco from cardapio where id = 3)),
+(default, 1, 8, 1, (select preco from cardapio where id = 8)),
+(default, 2, 1, 2, (select preco from cardapio where id = 1)),
+(default, 3, 4, 1, (select preco from cardapio where id = 4)),
+(default, 3, 6, 1, (select preco from cardapio where id = 6));
 
 
 update pedido set valorPedido = (select sum(valor) from itens where pedidoId = 1) where id = 1;

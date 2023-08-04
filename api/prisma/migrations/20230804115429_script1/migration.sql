@@ -26,7 +26,7 @@ CREATE TABLE `Cliente` (
     `telefones` VARCHAR(191) NOT NULL,
     `enderecoCep` VARCHAR(191) NOT NULL,
     `enderecoNumero` VARCHAR(191) NOT NULL,
-    `enderecoComplemento` VARCHAR(191) NULL,
+    `enderecoComplemento` VARCHAR(191) NOT NULL,
 
     UNIQUE INDEX `Cliente_cpf_key`(`cpf`),
     PRIMARY KEY (`id`)
