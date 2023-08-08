@@ -9,9 +9,10 @@ const create = async (req, res) => {
         });
         return res.status(201).json(cliente).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(400).json({ error: error.message }).end();
     }
 }
+
 const read = async (req, res) => {
     if (req.params.id) {
         const id = parseInt(req.params.id);
@@ -23,7 +24,7 @@ const read = async (req, res) => {
         return res.json(cliente);
     } else {
         const cliente = await prisma.cliente.findMany();
-        return res.json(cliente)
+        return res.json(cliente);
     }
 }
 
@@ -38,7 +39,7 @@ const update = async (req, res) => {
         });
         res.status(202).json(cliente).end();
     } catch (error) {
-        res.status(404).json({ error: error.message }).end()
+        res.status(404).json({ error: error.message }).end();
     }
 }
 
@@ -56,8 +57,8 @@ const del = async (req, res) => {
 }
 
 module.exports = {
-    create,
     read,
+    create,
     update,
     del
 };

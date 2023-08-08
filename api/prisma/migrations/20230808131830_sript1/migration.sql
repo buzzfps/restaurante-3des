@@ -26,7 +26,7 @@ CREATE TABLE `Cliente` (
     `telefones` VARCHAR(191) NOT NULL,
     `enderecoCep` VARCHAR(191) NOT NULL,
     `enderecoNumero` VARCHAR(191) NOT NULL,
-    `enderecoComplemento` VARCHAR(191) NOT NULL,
+    `enderecoComplemento` VARCHAR(191) NULL,
 
     UNIQUE INDEX `Cliente_cpf_key`(`cpf`),
     PRIMARY KEY (`id`)
@@ -52,6 +52,7 @@ CREATE TABLE `Itens` (
     `pedidoId` INTEGER NOT NULL,
     `cardapioId` INTEGER NOT NULL,
     `quantidade` INTEGER NOT NULL,
+    `valor` DOUBLE NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -63,7 +64,7 @@ ALTER TABLE `Pedido` ADD CONSTRAINT `Pedido_clienteId_fkey` FOREIGN KEY (`client
 ALTER TABLE `Pedido` ADD CONSTRAINT `Pedido_motoboyId_fkey` FOREIGN KEY (`motoboyId`) REFERENCES `Motoboy`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE `Itens` ADD CONSTRAINT `Itens_pedidoId_fkey` FOREIGN KEY (`pedidoId`) REFERENCES `Pedido`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE `Itens` ADD CONSTRAINT `Itens_pedidoId_fkey` FOREIGN KEY (`pedidoId`) REFERENCES `Pedido`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Itens` ADD CONSTRAINT `Itens_cardapioId_fkey` FOREIGN KEY (`cardapioId`) REFERENCES `Cardapio`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
