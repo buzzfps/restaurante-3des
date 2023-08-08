@@ -1,10 +1,16 @@
 import { View, Image, Text, TouchableOpacity } from 'react-native';
-import styles from './styles';
+import styles from './style';
 
-const homeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation }) => {
     return (
-        <View style={styles.container}>
-            <Text>Página home</Text>
+        <View style={style.container}>
+            <TouchableOpacity
+                style={style.button}
+                onPress={() => navigation.navigate('PedidoScreen')}>
+                <Text>Pedidos</Text>
+            </TouchableOpacity>
         </View>
     );
 }
+
+export default HomeScreen;
