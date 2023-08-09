@@ -35,6 +35,7 @@ router.get('/pedido/entrega', pedido.readEntrega);
 router.get('/pedido/hoje', pedido.readHoje);
 router.get('/pedido/:id', pedido.read);
 router.put('/pedido', pedido.update);
+router.put('/pedido/cozinha', pedido.concluirCozinha);
 router.delete('/pedido/:id', pedido.del);
 
 router.post('/itens', itens.create);

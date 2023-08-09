@@ -5,14 +5,13 @@ import ItemPedido from '../../components/item';
 
 const PedidosScreen = ({ navigation }) => {
 
-    const uri = 'http://localhost:3000/pedido/cozinha';
+    const uri = 'http://localhost:3000/pedido';
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/pedido/cozinha', { method: 'GET' })
+        fetch(uri + '/cozinha', { method: 'GET' })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 setPedidos(data);
             });
     }, []);
@@ -48,10 +47,14 @@ const PedidosScreen = ({ navigation }) => {
                 renderItem={({ item }) => (
                     <View style={styles.pedido}>
                         <Text style={styles.text}>Id: {item.id}</Text>
-                        <Text style={styles.text}>Hora: {item.dataPedido}</Text>
+                        <Text style={styles.text}>
+                            Data: {item.dataPedido.toString().slice(0, 10) + " "}
+                            Hora: {item.dataPedido.toString().slice(11, 16)}
+                        </Text>
                         <ItemPedido item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
+                            onPress={() => concluirPedido(item.id)}
                         >
                             <Text style={styles.buttonText}>Concluído</Text>
                         </TouchableOpacity>
