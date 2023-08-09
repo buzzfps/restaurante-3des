@@ -5,6 +5,7 @@ import ItemPedido from '../../components/item';
 
 const PedidosScreen = ({ navigation }) => {
 
+    const uri = 'http://localhost:3000/pedido/cozinha';
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
@@ -15,6 +16,29 @@ const PedidosScreen = ({ navigation }) => {
                 setPedidos(data);
             });
     }, []);
+
+    const concluirPedido = (id) => {
+        const corpo = {
+            id: id,
+            dataCozinha: new Date()
+        }
+
+        const options = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(corpo)
+        };
+
+        fetch(uri, options)
+            .then(resp => resp.status)
+            .then(data => {
+                if (data = 202) {
+                    navigation.navigate('HomeScreen')
+                } else {
+                    alert('Erro ao concluir pedido!')
+                }
+            });
+    }
 
     return (
         <View style={styles.container}>

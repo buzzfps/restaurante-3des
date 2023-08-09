@@ -19,5 +19,26 @@
                 }
             }
         ]
+    },
+    {
+        "id": 12,
+        "clienteId": 1,
+        "motoboyId": 1,
+        "dataPedido": "2023-08-09T12:59:21.887Z",
+        "dataCozinha": null,
+        "dataEntrega": null,
+        "valorPedido": 25,
+        "valorEntrega": 0,
+        "itens": [
+            {
+                "quantidade": 2,
+                "cardapio": {
+                    "id": 3,
+                    "produto": "Contra Filé Argentino",
+                    "descricao": "Contra filé grelhado, com molho de churrasco, farofa, Acompanha arroz branco e feijão.",
+                    "preco": 50
+                }
+            }
+        ]
     }
 ]
