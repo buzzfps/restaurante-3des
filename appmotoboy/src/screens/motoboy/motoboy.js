@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles'
-import MotoboyPedidos from '../components/itens/index';
+import MotoboyPedidos from '../../components/itens/index';
 
 const EntregaScreen = ({ navigation }) => {
 
@@ -9,17 +9,16 @@ const EntregaScreen = ({ navigation }) => {
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
-        fetch(uri + '/cozinha', { method: 'GET' })
+        fetch(uri + '/entrega', { method: 'GET' })
             .then(response => response.json())
             .then(data => {
                 setPedidos(data);
             });
     }, []);
 
-    const concluirPedido = (id) => {
+    const concluirEntrega = (id) => {
         const corpo = {
             id: id,
-            dataCozinha: new Date()
         }
 
         const options = {
@@ -34,7 +33,7 @@ const EntregaScreen = ({ navigation }) => {
                 if (data = 202) {
                     navigation.navigate('EntregaScreen')
                 } else {
-                    alert('Erro ao concluir pedido!')
+                    alert('Erro ao concluir Entrega!')
                 }
             });
     }
@@ -54,9 +53,9 @@ const EntregaScreen = ({ navigation }) => {
                         <MotoboyPedidos item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => concluirPedido(item.id)}
+                            onPress={() => concluirEntrega(item.id)}
                         >
-                            <Text style={styles.buttonText}>Concluído</Text>
+                            <Text style={styles.buttonText}>Concluir Entrega</Text>
                         </TouchableOpacity>
                     </View>
                 )}
@@ -65,4 +64,4 @@ const EntregaScreen = ({ navigation }) => {
     );
 }
 
-export default PedidosScreen;
+export default EntregaScreen;

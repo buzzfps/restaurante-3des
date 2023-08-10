@@ -10,6 +10,7 @@ export default function MotoboyPedidos({ item }) {
                     <Text style={styles.text}>Nome: {item.nome}</Text>
                     <Text style={styles.text}>Placa: {item.motoboy.placa}</Text>
                     <Text style={styles.text}>Modelo: {item.motoboy.modelo}</Text>
+
                 </View>
             )}
         />

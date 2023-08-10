@@ -51,6 +51,7 @@ const PedidosScreen = ({ navigation }) => {
                             Data: {item.dataPedido.toString().slice(0, 10) + " "}
                             Hora: {item.dataPedido.toString().slice(11, 16)}
                         </Text>
+                        <Text style={styles.text}>Entrega: {item.clienteId == 1 ? "Não" : "Sim"}</Text>
                         <ItemPedido item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
