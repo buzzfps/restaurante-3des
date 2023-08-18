@@ -5,7 +5,7 @@ import MotoboyPedidos from '../../components/itens/index';
 
 const EntregaScreen = ({ navigation }) => {
 
-    const uri = 'http://localhost:3000/motoboy';
+    const uri = 'http://localhost:3000/pedido';
     const [pedidos, setPedidos] = useState([]);
 
     useEffect(() => {
@@ -19,6 +19,7 @@ const EntregaScreen = ({ navigation }) => {
     const concluirEntrega = (id) => {
         const corpo = {
             id: id,
+            dataEntrega: new Date()
         }
 
         const options = {
@@ -42,18 +43,17 @@ const EntregaScreen = ({ navigation }) => {
         <View style={styles.container}>
             <FlatList
                 data={pedidos}
-                keyExtractor={item => item.id.toString()}
                 renderItem={({ item }) => (
                     <View style={styles.pedido}>
-                        <Text style={styles.text}>Id: {item.id}</Text>
-                        <Text style={styles.text}>
-                            Data: {item.dataPedido.toString().slice(0, 10) + " "}
-                            Hora: {item.dataPedido.toString().slice(11, 16)}
-                        </Text>
+                        <Text style={styles.text}>Cliente: {item.cliente.nome}</Text>
+                        <Text style={styles.text}>CEP: {item.cliente.enderecoCep}</Text>
+                        <Text style={styles.text}>Número da casa: {item.cliente.enderecoNumero}</Text>
+                        <Text style={styles.text}>Complemento: {item.cliente.enderecoComplemento}</Text>
+                        <Text style={styles.text}>Valor total: R$ {item.valorPedido + item.valorEntrega}</Text>
                         <MotoboyPedidos item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => concluirEntrega(item.id)}
+                            onPress={() => concluirEntrega(item.clienteId, item.id)}
                         >
                             <Text style={styles.buttonText}>Concluir Entrega</Text>
                         </TouchableOpacity>
