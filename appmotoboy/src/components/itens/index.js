@@ -7,10 +7,7 @@ export default function MotoboyPedidos({ item }) {
             data={item}
             renderItem={({ item }) => (
                 <View style={styles.pedido}>
-                    <Text style={styles.text}>Nome: {item.nome}</Text>
-                    <Text style={styles.text}>Placa: {item.motoboy.placa}</Text>
-                    <Text style={styles.text}>Modelo: {item.motoboy.modelo}</Text>
-
+                    <Text style={styles.text}>{item.quantidade} {item.cardapio.produto}</Text>
                 </View>
             )}
         />
