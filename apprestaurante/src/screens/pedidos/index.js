@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles'
-import ItemPedido from '../../components/item';
+import ItemPedido from '../../components/item/index';
 
 const PedidosScreen = ({ navigation }) => {
 
