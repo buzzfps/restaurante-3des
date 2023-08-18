@@ -19,6 +19,7 @@ const EntregaScreen = ({ navigation }) => {
     const concluirEntrega = (id, clienteId) => {
         const corpo = {
             id: id,
+            dataEntrega: new Date()
         }
 
         const options = {
@@ -52,7 +53,7 @@ const EntregaScreen = ({ navigation }) => {
                         <MotoboyPedidos item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => concluirEntrega(item.id)}
+                            onPress={() => concluirEntrega(item.id, item.clienteId)}
                         >
                             <Text style={styles.buttonText}>Concluir Entrega</Text>
                         </TouchableOpacity>
