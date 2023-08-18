@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import styles from './styles'
-import MotoboyPedidos from '../../components/itens/index';
+import MotoboyPedidos from '../../components/item/index';
 
 const EntregaScreen = ({ navigation }) => {
 
@@ -19,7 +19,6 @@ const EntregaScreen = ({ navigation }) => {
     const concluirEntrega = (id, clienteId) => {
         const corpo = {
             id: id,
-            dataEntrega: new Date(),
         }
 
         const options = {
@@ -53,7 +52,7 @@ const EntregaScreen = ({ navigation }) => {
                         <MotoboyPedidos item={item.itens} />
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={() => concluirEntrega(item.id, item.clienteId)}
+                            onPress={() => concluirEntrega(item.id)}
                         >
                             <Text style={styles.buttonText}>Concluir Entrega</Text>
                         </TouchableOpacity>
